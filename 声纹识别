@@ -305,9 +305,9 @@ def req_url(api_name, APPId, APIKey, APISecret, file_path=None):
 """
 
 if __name__ == '__main__':
-    APPId = ""
-    APISecret = ""
-    APIKey = ""
+    APPId = "5ef34cef"
+    APISecret = "6ba09f52e239d46d6e659ddfc6c11555"
+    APIKey = "a08494a7badaf5dad093c26fd7cfeb7c"
     file_path = '示例音频/讯飞开放平台.mp3'
     # apiname取值:
     # 1.创建声纹特征库 createGroup
