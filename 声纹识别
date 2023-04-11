@@ -8,6 +8,8 @@ from urllib.parse import urlencode
 from wsgiref.handlers import format_date_time
 
 import requests
+import os
+import pandas as pd
 
 
 # 填写在开放平台申请的APPID、APIKey、APISecret
@@ -295,6 +297,8 @@ def req_url(api_name, APPId, APIKey, APISecret, file_path=None):
     response = requests.post(request_url, data=json.dumps(body), headers=headers)
     tempResult = json.loads(response.content.decode('utf-8'))
     print(tempResult)
+    fb=tempResult.get('payload').get(api_name+'Res').get('text')
+    return str(base64.b64decode('fb'),'utf-8')
 
 
 """
@@ -309,6 +313,7 @@ if __name__ == '__main__':
     APISecret = "6ba09f52e239d46d6e659ddfc6c11555"
     APIKey = "a08494a7badaf5dad093c26fd7cfeb7c"
     file_path = '示例音频/讯飞开放平台.mp3'
+    sons_file_path='/'
     # apiname取值:
     # 1.创建声纹特征库 createGroup
     # 2.添加音频特征 createFeature
@@ -318,5 +323,15 @@ if __name__ == '__main__':
     # 6.更新音频特征 updateFeature
     # 7.删除指定特征 deleteFeature
     # 8.删除声纹特征库 deleteGroup
-    req_url(api_name='createGroup', APPId=APPId,
+    create_gp=req_url(api_name='createGroup', APPId=APPId,
             APIKey=APIKey, APISecret=APISecret, file_path=file_path)
+
+    #构建一个日志文件 
+    data_voice=pd.Dataframe()
+    for i in os.listdir(sons_file_path):
+        son_file_path=sons_file_path+i
+        scoretext=req_url(api_name='searchScoreFea', APPId=APPId,
+            APIKey=APIKey, APISecret=APISecret, file_path=son_file_path)
+        #如何提取score分数
+        score=scoretext()
+
