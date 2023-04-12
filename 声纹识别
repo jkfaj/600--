@@ -349,17 +349,13 @@ if __name__ == '__main__':
     # 6.更新音频特征 updateFeature
     # 7.删除指定特征 deleteFeature
     # 8.删除声纹特征库 deleteGroup
-    req_urlgroup(api_name='deleteGroup', APPId=APPId,
+    create_gp=req_urlgroup(api_name='deleteGroup', APPId=APPId,
             APIKey=APIKey, APISecret=APISecret, file_path=file_path)
 
-    req_urlgroup(api_name='createGroup', APPId=APPId,
+    create_gp=req_urlgroup(api_name='createGroup', APPId=APPId,
             APIKey=APIKey, APISecret=APISecret, file_path=file_path)
 
-    req_urlgroup(api_name='createFeature', APPId=APPId,
-            APIKey=APIKey, APISecret=APISecret, file_path=file_path)
-
-
-    req_urlgroup(api_name='queryFeatureList', APPId=APPId,
+    create_gp=req_urlgroup(api_name='queryFeatureList', APPId=APPId,
             APIKey=APIKey, APISecret=APISecret, file_path=file_path)
 
 
@@ -367,6 +363,7 @@ if __name__ == '__main__':
     data2=pd.DataFrame(data=None,columns=['语音内容','相似度'])
     for i in os.listdir(sons_file_path):
         son_file_path=sons_file_path+i
+        print(son_file_path)
         scoretext=req_url(api_name='searchScoreFea', APPId=APPId,
             APIKey=APIKey, APISecret=APISecret, file_path=son_file_path)
         #如何提取score分数
