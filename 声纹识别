@@ -322,7 +322,8 @@ def req_url(api_name, APPId, APIKey, APISecret, file_path=None):
     tempResult = json.loads(response.content.decode('utf-8'))
     print(tempResult)
     fb=tempResult.get('payload').get(api_name+'Res').get('text')
-    print( str(base64.b64decode('fb'),'utf-8'))
+    fb = fb + '=' * (4 - len(fb) % 4) if len(fb) % 4 != 0 else fb
+    return str(base64.b64decode('fb'),'utf-8')
 
 
 """
