@@ -11,6 +11,7 @@ import requests
 import os
 import pandas as pd
 from datetime import datetime
+import ast
 
 
 # 填写在开放平台申请的APPID、APIKey、APISecret
@@ -334,7 +335,8 @@ if __name__ == '__main__':
         scoretext=req_url(api_name='searchScoreFea', APPId=APPId,
             APIKey=APIKey, APISecret=APISecret, file_path=son_file_path)
         #如何提取score分数
-        score=scoretext()
+        score_dic=ast.literal_eval(scoretext)
+        score=int(score_dic['score'])
         dic ={'语音内容':os.path.splitext(i)[0],'相似度':score}
         data1=pd.DataFrame(dic,index=[0])
         data2=data2.append(data1,ignore_index=True)
