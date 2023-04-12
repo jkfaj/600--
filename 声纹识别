@@ -355,6 +355,9 @@ if __name__ == '__main__':
     create_gp=req_urlgroup(api_name='createGroup', APPId=APPId,
             APIKey=APIKey, APISecret=APISecret, file_path=file_path)
 
+    create_gp=req_urlgroup(api_name='createFeature', APPId=APPId,
+            APIKey=APIKey, APISecret=APISecret, file_path=file_path)
+
     create_gp=req_urlgroup(api_name='queryFeatureList', APPId=APPId,
             APIKey=APIKey, APISecret=APISecret, file_path=file_path)
 
