@@ -338,7 +338,7 @@ if __name__ == '__main__':
     APISecret = "6ba09f52e239d46d6e659ddfc6c11555"
     APIKey = "a08494a7badaf5dad093c26fd7cfeb7c"
     file_path = 'C:\\Users\\Administrator\\Desktop\\test2\\音纹库\\test.mp3'
-    sons_file_path='C:\\Users\\Administrator\\Desktop\\test2\\声音识别素材\\'
+    sons_file_path='C:\\Users\\Administrator\\Desktop\\test2\\声纹识别素材\\'
  
     # apiname取值:
     # 1.创建声纹特征库 createGroup
