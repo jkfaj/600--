@@ -10,6 +10,7 @@ from wsgiref.handlers import format_date_time
 import requests
 import os
 import pandas as pd
+from datetime import datetime
 
 
 # 填写在开放平台申请的APPID、APIKey、APISecret
@@ -334,6 +335,16 @@ if __name__ == '__main__':
             APIKey=APIKey, APISecret=APISecret, file_path=son_file_path)
         #如何提取score分数
         score=scoretext()
+        dic ={'语音内容':os.splitext[i][0],'相似度':score}
+        data1=pd.DataFrame(dic,index=[0])
+        data2=data2.append(data1,ignore_index=True)
+        
+    now_time=datetime.now().strftime('%Y%m%d%H%M%S')
+    trans_txt='声纹识别'+now_time+'.txt'
+    log_path='C:\\Users\\Administrator\\Desktop\\test2\\日志\\声纹识别日志\\'
+    if not os.path.exists(log_path):os.mkdir(log_path)
+    log_file=log_path+trans_txt
+    data2.to_csv(log_file,index=False,sep=' ')
 
 
 
