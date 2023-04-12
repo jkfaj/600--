@@ -353,7 +353,7 @@ if __name__ == '__main__':
             APIKey=APIKey, APISecret=APISecret, file_path=file_path)
 
     #构建一个日志文件 
-    data2=pd.Dataframe(data=None,columns=['语音内容','相似度'])
+    data2=pd.DataFrame(data=None,columns=['语音内容','相似度'])
     for i in os.listdir(sons_file_path):
         son_file_path=sons_file_path+i
         scoretext=req_url(api_name='searchScoreFea', APPId=APPId,
