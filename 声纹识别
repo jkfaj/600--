@@ -282,7 +282,7 @@ def gen_req_body(apiname, APPId, file_path=None):
     return body
 
 
-def req_urlgrou(api_name, APPId, APIKey, APISecret, file_path=None):
+def req_urlgroup(api_name, APPId, APIKey, APISecret, file_path=None):
     """
     开始请求
     :param APPId: APPID
@@ -349,7 +349,7 @@ if __name__ == '__main__':
     # 6.更新音频特征 updateFeature
     # 7.删除指定特征 deleteFeature
     # 8.删除声纹特征库 deleteGroup
-    create_gp=req_url(api_name='createGroup', APPId=APPId,
+    create_gp=req_urlgroup(api_name='createGroup', APPId=APPId,
             APIKey=APIKey, APISecret=APISecret, file_path=file_path)
 
     #构建一个日志文件 
