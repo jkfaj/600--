@@ -282,6 +282,28 @@ def gen_req_body(apiname, APPId, file_path=None):
     return body
 
 
+def req_urlgroup(api_name, APPId, APIKey, APISecret, file_path=None):
+    """
+    开始请求
+    :param APPId: APPID
+    :param APIKey:  APIKEY
+    :param APISecret: APISecret
+    :param file_path: body里的文件路径
+    :return:
+    """
+    gen_req_url = Gen_req_url()
+    body = gen_req_body(apiname=api_name, APPId=APPId, file_path=file_path)
+    request_url = gen_req_url.assemble_ws_auth_url(requset_url='https://api.xf-yun.com/v1/private/s782b4996', method="POST", api_key=APIKey, api_secret=APISecret)
+
+    headers = {'content-type': "application/json", 'host': 'api.xf-yun.com', 'appid': '$APPID'}
+    response = requests.post(request_url, data=json.dumps(body), headers=headers)
+    tempResult = json.loads(response.content.decode('utf-8'))
+    print(tempResult)
+  #  fb=tempResult.get('payload').get(api_name+'Res').get('text')
+   # return str(base64.b64decode('fb'),'utf-8')
+
+
+
 def req_url(api_name, APPId, APIKey, APISecret, file_path=None):
     """
     开始请求
@@ -326,7 +348,7 @@ if __name__ == '__main__':
     # 6.更新音频特征 updateFeature
     # 7.删除指定特征 deleteFeature
     # 8.删除声纹特征库 deleteGroup
-    create_gp=req_url(api_name='createGroup', APPId=APPId,
+    create_gp=req_urlgroup(api_name='createGroup', APPId=APPId,
             APIKey=APIKey, APISecret=APISecret, file_path=file_path)
 
     #构建一个日志文件 
