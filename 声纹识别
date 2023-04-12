@@ -328,16 +328,19 @@ if __name__ == '__main__':
             APIKey=APIKey, APISecret=APISecret, file_path=file_path)
 
     #构建一个日志文件 
-    data_voice=pd.Dataframe(data=None,columns=['语音内容','相似度'])
+    data2=pd.Dataframe(data=None,columns=['语音内容','相似度'])
     for i in os.listdir(sons_file_path):
         son_file_path=sons_file_path+i
         scoretext=req_url(api_name='searchScoreFea', APPId=APPId,
             APIKey=APIKey, APISecret=APISecret, file_path=son_file_path)
         #如何提取score分数
         score=scoretext()
-        dic ={'语音内容':os.splitext[i][0],'相似度':score}
+        dic ={'语音内容':os.path.splitext(i)[0],'相似度':score}
         data1=pd.DataFrame(dic,index=[0])
         data2=data2.append(data1,ignore_index=True)
+
+        if score<0.8:
+            os.remove(son_file_path)
         
     now_time=datetime.now().strftime('%Y%m%d%H%M%S')
     trans_txt='声纹识别'+now_time+'.txt'
@@ -347,33 +350,5 @@ if __name__ == '__main__':
     data2.to_csv(log_file,index=False,sep=' ')
 
 
-
-data2=pd.DataFrame(data=None,columns=['编号','语音内容'])
-
-#trans_wav="C:\\Users\\Administrator\\Desktop\\test2\\转wav"
-    # 测试时候在此处正确填写相关信息即可运行
-time1 = datetime.now()
-for num in range(0,len(namelist),1):
-
-    #audiofile2=chunkspath+namelist[num]+'\\'
-    to_save_trans=wavpath+namelist[num]+'\\'
-
-
-    for i in os.listdir(to_save_trans):
-        num=os.path.splitext(i)[0]
-        xunfei_wav=to_save_trans+i
-        audioFile = xunfei_wav
-        result= process(request, token, audioFile)
-        print(num,result)
-        dic ={'编号':num,'语音内容':result}
-        data1=pd.DataFrame(dic,index=[0])
-        data2=data2.append(data1,ignore_index=True)
-    
-time2 = datetime.now()
-print(time2-time1)
-now_time=datetime.now().strftime('%Y%m%d%H%M%S')
-trans_txt=now_time+'.txt'
-log_file="C:\\Users\\Administrator\\Desktop\\test2\\日志\\"+trans_txt
-data2.to_csv(log_file,index=False,sep=' ')
 
 
