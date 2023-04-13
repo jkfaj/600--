@@ -302,7 +302,7 @@ def req_urlgroup(api_name, APPId, APIKey, APISecret, file_path=None):
     fb=tempResult.get('payload').get(api_name+'Res').get('text')
     fb = fb + '=' * (4 - len(fb) % 4) if len(fb) % 4 != 0 else fb
     
-    print( str(base64.b64decode('fb'),'utf-8'))
+    print( str(base64.b64decode(fb),'utf-8'))
 
 
 
@@ -325,7 +325,7 @@ def req_url(api_name, APPId, APIKey, APISecret, file_path=None):
     print(tempResult)
     fb=tempResult.get('payload').get(api_name+'Res').get('text')
     fb = fb + '=' * (4 - len(fb) % 4) if len(fb) % 4 != 0 else fb
-    return str(base64.b64decode('fb'),'utf-8')
+    return str(base64.b64decode(fb),'utf-8')
 
 
 """
