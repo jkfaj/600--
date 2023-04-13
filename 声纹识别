@@ -298,7 +298,7 @@ def req_urlgroup(api_name, APPId, APIKey, APISecret, file_path=None):
     headers = {'content-type': "application/json", 'host': 'api.xf-yun.com', 'appid': '$APPID'}
     response = requests.post(request_url, data=json.dumps(body), headers=headers)
     tempResult = json.loads(response.content.decode('utf-8'))
-   # print(tempResult)
+    print(tempResult)
     fb=tempResult.get('payload').get(api_name+'Res').get('text')
     fb = fb + '=' * (4 - len(fb) % 4) if len(fb) % 4 != 0 else fb
     
