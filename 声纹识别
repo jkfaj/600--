@@ -298,9 +298,9 @@ def req_urlgroup(api_name, APPId, APIKey, APISecret, file_path=None):
     headers = {'content-type': "application/json", 'host': 'api.xf-yun.com', 'appid': '$APPID'}
     response = requests.post(request_url, data=json.dumps(body), headers=headers)
     tempResult = json.loads(response.content.decode('utf-8'))
-    print(tempResult)
-  #  fb=tempResult.get('payload').get(api_name+'Res').get('text')
-   # return str(base64.b64decode('fb'),'utf-8')
+   # print(tempResult)
+    fb=tempResult.get('payload').get(api_name+'Res').get('text')
+    print( str(base64.b64decode('fb'),'utf-8'))
 
 
 
@@ -349,16 +349,16 @@ if __name__ == '__main__':
     # 6.更新音频特征 updateFeature
     # 7.删除指定特征 deleteFeature
     # 8.删除声纹特征库 deleteGroup
-    create_gp=req_urlgroup(api_name='deleteGroup', APPId=APPId,
+    #create_gp=req_urlgroup(api_name='deleteGroup', APPId=APPId,
             APIKey=APIKey, APISecret=APISecret, file_path=file_path)
 
-    create_gp=req_urlgroup(api_name='createGroup', APPId=APPId,
+    req_urlgroup(api_name='createGroup', APPId=APPId,
             APIKey=APIKey, APISecret=APISecret, file_path=file_path)
 
-    create_gp=req_urlgroup(api_name='createFeature', APPId=APPId,
+    req_urlgroup(api_name='createFeature', APPId=APPId,
             APIKey=APIKey, APISecret=APISecret, file_path=file_path)
 
-    create_gp=req_urlgroup(api_name='queryFeatureList', APPId=APPId,
+    req_urlgroup(api_name='queryFeatureList', APPId=APPId,
             APIKey=APIKey, APISecret=APISecret, file_path=file_path)
 
 
