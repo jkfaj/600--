@@ -350,7 +350,7 @@ if __name__ == '__main__':
     # 7.删除指定特征 deleteFeature
     # 8.删除声纹特征库 deleteGroup
     #create_gp=req_urlgroup(api_name='deleteGroup', APPId=APPId,
-            APIKey=APIKey, APISecret=APISecret, file_path=file_path)
+            #APIKey=APIKey, APISecret=APISecret, file_path=file_path)
 
     req_urlgroup(api_name='createGroup', APPId=APPId,
             APIKey=APIKey, APISecret=APISecret, file_path=file_path)
